@@ -5,7 +5,7 @@ from .models import Boardgame, Cathegory
 
 @admin.register(Boardgame)
 class BoardgameAdmin(admin.ModelAdmin):
-    list_display = "pk", "name", "issue_year", "price"
+    list_display = "pk", "name", "issue_year", "cathegory", "price"
     list_display_links = "name", "pk"
     ordering = "pk",
 

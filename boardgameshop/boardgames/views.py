@@ -3,7 +3,7 @@ from django.http import HttpRequest
 from django.views.generic import ListView, DetailView
 
 from cart.forms import CartAddProductForm
-from .models import Boardgame
+from .models import Boardgame, Cathegory
 
 
 def index(request: HttpRequest):
@@ -36,3 +36,11 @@ class BoardgameListView(ListView):
 class BoardgameDetailView(DetailView):
     model = Boardgame
 
+
+class CathegorylistView(ListView):
+    context_object_name = "cathegorys"
+    queryset = (Cathegory
+                .objects
+                .order_by("pk")
+                .all()
+                )

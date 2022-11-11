@@ -1,9 +1,11 @@
 from django.urls import path
-from .views import index, details, BoardgameListView, BoardgameDetailView
+from .views import index, details, BoardgameListView, BoardgameDetailView, CathegorylistView
 
 app_name = "boardgames"
 
 urlpatterns = [
-    path("", BoardgameListView.as_view(), name="index"),
+    path("", index, name="index"),
+    path("list/", BoardgameListView.as_view(), name="index"),
+    path("cathegory/", CathegorylistView.as_view(), name="cathegory_list"),
     path("<int:pk>/", BoardgameDetailView.as_view(), name="details"),
 ]

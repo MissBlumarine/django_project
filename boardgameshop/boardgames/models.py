@@ -3,6 +3,7 @@ from django.db import models
 
 class Cathegory(models.Model):
     name = models.CharField(max_length=300)
+    description = models.TextField(max_length=400, null=True)
 
     def __str__(self):
         return self.name
@@ -20,6 +21,7 @@ class Boardgame(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     cathegory = models.ForeignKey(Cathegory, on_delete=models.PROTECT, related_name='boardgame')
     image_url = models.CharField(max_length=200, null=True)
+    how_to_play = models.TextField(max_length=2000, null=True)
 
     def __str__(self):
         return self.name

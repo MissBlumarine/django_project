@@ -12,7 +12,6 @@
     {% for boardgame in object_list %}
       <li class="list-group-item">
         <a href="{% url 'boardgames:details' boardgame.pk %}">{{ boardgame.name }} [ ---- {{ boardgame.price }} руб.]</a>
-        <i>Возраст игроков:<a href="{% url 'boardgames:details' boardgame.pk %}"> {{ boardgame.min_age_of_player}} +</i>
       </li>
     {% endfor %}
   </ul>

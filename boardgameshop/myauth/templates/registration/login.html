@@ -4,8 +4,17 @@
   Login
 {% endblock %}
 
-{% block body %}
+{% block head %}
+ <style>
+ .row_43{
+    margin-left: 300px;
+    margin-top: 50px;
+ }
+ </style>
+{% endblock %}
 
+{% block body %}
+  <div class="row_43"
   {% if form.errors %}
     <p>Your username and password didn't match. Please try again.</p>
   {% endif %}
@@ -40,5 +49,5 @@
       </form>
     </div>
   </div>
-
+</div>
 {% endblock %}

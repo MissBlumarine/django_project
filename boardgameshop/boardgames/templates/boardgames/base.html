@@ -8,7 +8,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <title>Homepage</title>
+
+
     <style>
+      .sidebar_left {
+        background-color: #FFFFFF;
+        margin-top: 0px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 220px;
+        padding: 0px 0px;
+        float:left
+      }
       body {
         background-color: #FFCC00;
       }
@@ -37,6 +49,34 @@
         background-color: #FFFFFF;
         clear: left;
       }
+      .cathegory{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding: 5px 10px;
+      }
+      .title-div{
+        margin-top: 20px;
+        margin-bottom: 10px;
+        padding: 7px 30px;
+        font-size: 1.1em;
+      }
+      .col{
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .container-games{
+        margin-left: 300px;
+        float: right;
+      }
+      .row_1{
+        margin-left: 300px;
+        margin-top: 50px;
+      }
+      .container-sidebar{
+        margin-top: 60px;
+      }
+      .form-label{
+        margin-top: 10px;
 
     </style>
 </head>
@@ -96,6 +136,61 @@
 
     <div class="container-1">
     <button type="button" class="btn btn-light"><a href="#">Мои заказы</a></button>
+  </div>
+
+  <div class = 'container-sidebar'>
+
+        <div class="sidebar_left">
+            <div class="title-div"><a class="title " href="#">Настольные игры</a></div>
+                <ul class="category-left__categories">
+                    <div class = 'cathegory'>
+                      <a href="#">Приключения</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Для компании</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Хардкорные</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Экономические</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Детские</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Бродилки</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Для взрослых 18+</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Для всей семьи</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Детективные</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Дуэльные</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Логические</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Командные</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Стратегические</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Для вечеринки</a>
+                    </div>
+                </ul>
+            </div>
+
+   {% block body_1 %}
+
+  {% endblock %}
   </div>
 
   {% block body %}

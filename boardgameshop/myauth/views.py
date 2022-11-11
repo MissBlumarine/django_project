@@ -46,4 +46,5 @@ class LoginView(LoginViewGeneric):
 
 
 class LogoutView(LogoutViewGeneric):
-    next_page = reverse_lazy("myauth:me")
+    # next_page = reverse_lazy("myauth:me")
+    next_page = reverse_lazy("boardgames:boardgame_list")

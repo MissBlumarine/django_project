@@ -1,8 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpRequest
 from django.views.generic import ListView, DetailView
-
-from cart.forms import CartAddProductForm
 from .models import Boardgame, Cathegory
 
 

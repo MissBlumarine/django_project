@@ -1,23 +1,124 @@
 {% extends 'boardgames/base.html' %}
 
+{% block head %}
 
-{% block title %}
-  Список настольных игр
+   <style>
+      .sidebar_left {
+        background-color: #FFFFFF;
+        margin-top: 0px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        width: 220px;
+        padding: 0px 0px;
+        float:left
+      }
+      .cathegory{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding: 5px 10px;
+      }
+      .title-div{
+        margin-top: 20px;
+        margin-bottom: 10px;
+        padding: 7px 30px;
+        font-size: 1.1em;
+      }
+      .col{
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .container-games{
+        margin-left: 300px;
+        float: right;
+      }
+      .row_1{
+        margin-left: 300px;
+        margin-top: 50px;
+      }
+      .container-sidebar{
+        margin-top: 60px;
+      }
+      .form-label{
+        margin-top: 10px;
+      }
+   </style>
+
 {% endblock %}
 
 {% block body %}
-<div class="container">
-  <h1>Список настольных игр</h1>
-  <ul class="list-group">
-    {% for boardgame in object_list %}
-      <li class="list-group-item">
-        <a href="{% url 'boardgames:details' boardgame.pk %}">{{ boardgame.name }} [ ---- {{ boardgame.price }} руб.]</a>
-      </li>
-    {% endfor %}
-  </ul>
-</div>
+    <div class = 'container-sidebar'>
 
-<div class="container">
-  <a href="{% url 'boardgames:addition' %}">Список дополнений к настольным играм</a>
-</div>
+        <div class="sidebar_left">
+            <div class="title-div"><a class="title " href="#">Настольные игры</a></div>
+                <ul class="category-left__categories">
+                    <div class = 'cathegory'>
+                      <a href="#">Приключения</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Для компании</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Хардкорные</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Экономические</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Детские</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Бродилки</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Для взрослых 18+</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Для всей семьи</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Детективные</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Дуэльные</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Логические</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Командные</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Стратегические</a>
+                    </div>
+                    <div class = 'cathegory'>
+                      <a href="#">Для вечеринки</a>
+                    </div>
+                </ul>
+            </div>
+
+        {% for boardgame in object_list %}
+        <div class="row_1">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><u>{{ boardgame.name }}</u></h4>
+                        <img scr="{{ boardgame.image_url.url }}" alt="Картинка">
+                        <p class="card-text">{{ boardgame.description }}</p>
+                        <a href="{% url 'boardgames:details' boardgame.pk %}" class="btn btn-primary">Подробнее</a>
+                        <a href="#" class="btn btn-primary">Добавить в корзину</a>
+                        <a href="#" class="btn btn-primary">{{ boardgame.price }} руб.</a>
+
+                        {% csrf_token %}
+										<label class="form-label" for="id_quantity">Quantity:</label>
+										<input type="number" name="quantity" value="1" min="1"
+											   required id="id_quantity"/>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
 {% endblock %}

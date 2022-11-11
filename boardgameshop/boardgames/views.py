@@ -27,7 +27,6 @@ class BoardgameListView(ListView):
     context_object_name = "boardgames"
     queryset = (Boardgame
                 .objects
-                .select_related("min_age_of_player")
                 .order_by("pk")
                 .all()
                 )

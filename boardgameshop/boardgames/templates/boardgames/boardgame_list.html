@@ -50,7 +50,7 @@
         <div class="row_1">
             <div class="col-sm-6">
                 <div class="card">
-                    <form method="post" action="{% url 'cart:add_item_to_cart' boardgame.pk %}">
+                    <form method="post" action="{% url 'cart:cart_add' boardgame.pk %}">
                         <div class="card-body">
                             <h4 class="card-title"><u>{{ boardgame.name }}</u></h4>
                             <img scr="{{ boardgame.image_url.url }}" alt="Картинка">

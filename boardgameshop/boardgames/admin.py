@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import Boardgame, Cathegory, Payment, OrderItem, Order
+from .models import Boardgame, Cathegory
+# from cart.models import Payment, OrderItem, Order
 
 
 @admin.register(Boardgame)
@@ -17,6 +18,6 @@ class CathegoryAdmin(admin.ModelAdmin):
     ordering = "pk",
 
 
-admin.site.register(Payment)
-admin.site.register(OrderItem)
-admin.site.register(Order)
+# admin.site.register(Payment)
+# admin.site.register(OrderItem)
+# admin.site.register(Order)

@@ -1,11 +1,10 @@
-{% extends 'boardgames/base.html' %}
-
+{% extends "boardgames/base.html" %}
 {% load static %}
 {% block title %}
     Your shopping cart
 {% endblock %}
 {% block content %}
-<h1 xmlns:boardgames="http://www.w3.org/1999/xhtml">Your shopping cart</h1>
+    <h1>Your shopping cart</h1>
     <table class="cart">
         <thead>
         <tr>
@@ -33,7 +32,7 @@
                     </td>
                     <td>{{ product.name }}</td>
                     <td>{{ item.quantity }}</td>
-                    <td><a href="{% url "cart:cart_remove" product.id%}">Remove</a></td>
+                    <td><a href="{% url 'cart: cart_remove' product.id%}">Remove</a></td>
                     <td class="num">${{ item.price }}</td>
                     <td class="num">${{ item.total_price }}</td>
                 </tr>
@@ -47,7 +46,7 @@
         </tbody>
     </table>
     <p class="text-right">
-        <a href='{% url 'boardgames: boardgame_list' boardgame.pk %}" class="button light">Continue shopping</a>
-        <a href="#" class="button">Checkout</a>
+        <a href="{% url 'boardgames: boardgames_list' %}" class="button light">Continue shopping</a>
+        <a href="{% url 'orders:order_create' %}" class="button">Checkout</a>
     </p>
 {% endblock %}

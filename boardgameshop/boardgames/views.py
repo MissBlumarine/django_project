@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpRequest
 from django.views.generic import ListView, DetailView
 from .models import Boardgame, Cathegory
+from cart.forms import CartAddProductForm
 
 
 def index(request: HttpRequest):
@@ -17,6 +18,7 @@ def details(request: HttpRequest, pk: int, slug):
     }
     cart_product_form = CartAddProductForm()
     return render(request=request, template_name="boardgames/details.html", context=context)
+
 
 # slug= {'product': product, 'cart_product_form': cart_product_form}
 
@@ -41,3 +43,13 @@ class CathegorylistView(ListView):
                 .order_by("pk")
                 .all()
                 )
+
+
+def product_detail(request, pk, slug):
+    product = get_object_or_404(Boardgame,
+                                pk=pk,
+                                slug=slug,
+                                available=True)
+    cart_product_form = CartAddProductForm()
+    return render(request, 'boardgames/boardgame_detail.html', {'product': product,
+                                                      'cart_product_form': cart_product_form})

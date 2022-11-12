@@ -1,9 +1,8 @@
 from django import forms
-from boardgames.models import OrderItem
+
+PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 21)]
 
 
-class AddQuantityForm(forms.ModelForm):
-    class Meta:
-        model = OrderItem
-        fields = ['quantity']
-
+class CartAddProductForm(forms.Form):
+    quantity = forms.TypedChoiceField(choices=PRODUCT_QUANTITY_CHOICES, coerce=int)
+    update = forms.BooleanField(required=False, initial=False, widget=forms.HiddenInput)

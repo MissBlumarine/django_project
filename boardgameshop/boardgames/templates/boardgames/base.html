@@ -188,6 +188,20 @@
                 </ul>
             </div>
 
+        <div class="cart">
+            {% with total_items=cart|length %}
+                {% if cart|length > 0 %}
+                    Ваша корзина:
+                    <a href="{% url 'cart:cart_detail' %}">
+                        {{ total_items }} item{{ total_items|pluralize }},
+                        {{ cart.get_total_price }}руб.
+                    </a>
+                {% else %}
+                    Ваша корзина пуста.
+                {% endif %}
+            {% endwith %}
+        </div>
+
    {% block body_1 %}
 
   {% endblock %}

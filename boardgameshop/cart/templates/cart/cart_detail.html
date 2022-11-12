@@ -1,0 +1,41 @@
+{% extends "boardgames/base.html" %}
+
+{% block title %}
+    Your shopping cart
+{% endblock %}
+
+{% block body_1 %}
+    <h1>Ваша корзина</h1>
+    <table class="cart">
+        <thead>
+        <tr>
+            <th>Наименование</th>
+            <th>Количество</th>
+            <th>Стоимость, 1 шт.</th>
+            <th>Общая стоимость</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in cart %}
+            {% with product=item.boardgame %}
+                <tr>
+                    <td>{{ boardgame.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td><a href="{% url 'cart: cart_remove' product.id%}">Удалить</a></td>
+                    <td class="num">{{ item.price }}</td>
+                    <td class="num">{{ item.total_price }}</td>
+                </tr>
+            {% endwith %}
+        {% endfor %}
+        <tr class="total">
+            <td>Total</td>
+            <td colspan="4"></td>
+            <td class="num">${{ cart.get_total_price }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="text-right">
+        <a href="{% url 'boardgames: boardgames_list' %}" class="button light">Продолжить покупки</a>
+        <a href="{% url 'orders:order_create' %}" class="button">Checkout</a>
+    </p>
+{% endblock %}

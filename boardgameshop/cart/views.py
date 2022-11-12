@@ -20,9 +20,9 @@ def cart_add(request, pk):
     # return render(request=request, template_name="cart/cart_detail.html")
 
 
-def cart_remove(request, product_id):
+def cart_remove(request, pk):
     cart = Cart(request)
-    product = get_object_or_404(Boardgame, pk=product_id)
+    product = get_object_or_404(Boardgame, pk=pk)
     cart.remove(product)
     return redirect('cart:cart_detail')
     # return render(request=request, template_name='cart/cart_detail.html')

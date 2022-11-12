@@ -3,7 +3,7 @@
 {% block title %}
     Your shopping cart
 {% endblock %}
-{% block content %}
+{% block body %}
     <h1>Your shopping cart</h1>
     <table class="cart">
         <thead>
@@ -32,7 +32,7 @@
                     </td>
                     <td>{{ product.name }}</td>
                     <td>{{ item.quantity }}</td>
-                    <td><a href="{% url 'cart: cart_remove' product.id%}">Remove</a></td>
+                    <td><a href="{% url 'cart:cart_remove' product.pk%}">Remove</a></td>
                     <td class="num">${{ item.price }}</td>
                     <td class="num">${{ item.total_price }}</td>
                 </tr>
@@ -41,12 +41,12 @@
         <tr class="total">
             <td>Total</td>
             <td colspan="4"></td>
-            <td class="num">${{ cart.get_total_price }}</td>
+            <td class="num">{{ cart.get_total_price }}</td>
         </tr>
         </tbody>
     </table>
     <p class="text-right">
-        <a href="{% url 'boardgames: boardgames_list' %}" class="button light">Continue shopping</a>
+        <a href="{% url 'boardgames:boardgame_list' %}" class="button light">Continue shopping</a>
         <a href="{% url 'orders:order_create' %}" class="button">Checkout</a>
     </p>
 {% endblock %}

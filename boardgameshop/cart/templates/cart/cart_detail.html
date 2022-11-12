@@ -4,7 +4,8 @@
     Your shopping cart
 {% endblock %}
 
-{% block body_1 %}
+{% block body %}
+ <p>Привет моя корзина!</p>
     <h1>Ваша корзина</h1>
     <table class="cart">
         <thead>
@@ -17,9 +18,9 @@
         </thead>
         <tbody>
         {% for item in cart %}
-            {% with product=item.boardgame %}
+            {% with product=item.product %}
                 <tr>
-                    <td>{{ boardgame.name }}</td>
+                    <td>{{ item.name }}</td>
                     <td>{{ item.quantity }}</td>
                     <td><a href="{% url 'cart: cart_remove' product.id%}">Удалить</a></td>
                     <td class="num">{{ item.price }}</td>

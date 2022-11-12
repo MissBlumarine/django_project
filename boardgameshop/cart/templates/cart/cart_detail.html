@@ -1,42 +1,73 @@
 {% extends "boardgames/base.html" %}
 
-{% block title %}
-    Your shopping cart
+{% block head %}
+ <style>
+      .cart {
+        background-color: #FFFFFF;
+        margin-left: 250px;
+        padding: 0px, 20px;
+        margin-top: 0px;
+      }
+      .text_1 {
+        margin-left: 260px;
+        margin-top: 15px;
+      }
+      .col1{
+        width: 260px;
+        height: 50px;
+      }
+      .col2{
+        width: 100px;
+      }
+      .num{
+        width: 150px;
+      }
+      .container_4{
+        margin-top: 15px;
+      }
+ </style>
 {% endblock %}
 
-{% block body %}
- <p>Привет моя корзина!</p>
-    <h1>Ваша корзина</h1>
+{% block body_1 %}
+
     <table class="cart">
-        <thead>
-        <tr>
+        <h4 class="text_1">Корзина</h4>
+    <thead class="row1">
+        <tr align="center">
             <th>Наименование</th>
-            <th>Количество</th>
-            <th>Стоимость, 1 шт.</th>
-            <th>Общая стоимость</th>
+            <th>Кол-во</th>
+            <th>Стоимость (1 шт.)   </th>
+            <th>Итого (руб.)</th>
+            <th> </th>
         </tr>
-        </thead>
+    </thead>
         <tbody>
         {% for item in cart %}
             {% with product=item.product %}
-                <tr>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td><a href="{% url 'cart: cart_remove' product.id%}">Удалить</a></td>
+                <tr align="center">
+                    <td class="col1">{{ item.product }}</td>
+                    <td class="col2">{{ item.quantity }}</td>
                     <td class="num">{{ item.price }}</td>
                     <td class="num">{{ item.total_price }}</td>
+                    <td><a href="{% url 'cart:cart_remove' product.pk%}">Удалить</a></td>
                 </tr>
             {% endwith %}
         {% endfor %}
-        <tr class="total">
-            <td>Total</td>
+        <tr class="total" align="center">
+            <td>Итоговая сумма</td>
             <td colspan="4"></td>
-            <td class="num">${{ cart.get_total_price }}</td>
+            <td class="num">{{ cart.get_total_price }} руб.</td>
         </tr>
         </tbody>
     </table>
-    <p class="text-right">
-        <a href="{% url 'boardgames: boardgames_list' %}" class="button light">Продолжить покупки</a>
-        <a href="{% url 'orders:order_create' %}" class="button">Checkout</a>
-    </p>
+<!--    <p class="text_1">-->
+<!--        <a href="{% url 'boardgames:boardgame_list' %}" class="button light">Продолжить покупки</a>-->
+<!--        <a href="{% url 'orders:order_create' %}" class="button">Оформить заказ</a>-->
+<!--    </p>-->
+
+<div class="container_4">
+    <button type="button" class="btn btn-light"><a href="{% url 'boardgames:boardgame_list' %}">Продолжить покупки</a></button>
+    <button type="button" class="btn btn-light"><a href="{% url 'orders:order_create' %}">Оформить заказ</a></button>
+</div>
+
 {% endblock %}

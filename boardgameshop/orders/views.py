@@ -13,6 +13,7 @@ def order_create(request):
             for item in cart:
                 OrderItem.objects.create(order=order,
                                          product=item['product'],
+                                         # boardgame=item['product'],
                                          price=item['price'],
                                          quantity=item['quantity'])
             # очистка корзины
@@ -23,3 +24,4 @@ def order_create(request):
         form = OrderCreateForm
     return render(request, 'orders/order/create.html',
                   {'cart': cart, 'form': form})
+

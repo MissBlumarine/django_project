@@ -1,24 +1,35 @@
 {% extends "boardgames/base.html" %}
 
-{% block title %}Checkout{% endblock %}
+{% block head %}
+   <style>
+    .order-info_1{
+        margin-left: 250px;
+    }
+    .order-form{
+        margin-left: 300px;
+    }
 
-{% block content %}
-    <h1>Checkout</h1>
-    <div class="order-info">
-        <h3>Your order</h3>
+    </style>
+ {% endblock %}
+
+{% block body_1 %}
+    <h4>Оформление заказа</h4>
+    <div class="order-info_1">
+        <h3><u>Ваш заказ:</u></h3>
         <ul>
             {% for item in cart %}
                 <li>
                     {{ item.quantity }}x {{ item.product.name }}
-                    <span>${{ item.total_price }}</span>
+                    <span>{{ item.total_price }} руб.</span>
                 </li>
             {% endfor %}
         </ul>
-        <p>Total: ${{ cart.get_total_price }}</p>
+        <p>Total: {{ cart.get_total_price }} руб.</p>
     </div>
     <form action="." method="post" class="order-form">
         {{ form.as_p }}
-        <p><input type="submit" value="Place order"></p>
+<!--        <p><input type="submit" value="Оформить заказ"></p>-->
+      <button class="btn btn-light" type="submit">Оформить заказ</button>
         {% csrf_token %}
     </form>
 {% endblock %}

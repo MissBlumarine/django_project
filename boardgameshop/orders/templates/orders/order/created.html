@@ -1,9 +1,14 @@
 {% extends "boardgames/base.html" %}
 
-{% block title %}Thank you{% endblock %}
 
-{% block content %}
-    <h1>Thank you</h1>
-    <p>Your order has been successfully completed. Your order number is
-        <strong>{{ order.id }}</strong>.</p>
+
+{% block body_1 %}
+    <h1>Спасибо за заказ!</h1>
+<!--    <p>Your order has been successfully completed. Your order number is-->
+<!--        <strong>{{ order.id }}</strong>.</p>-->
+    <p>Ваш заказ №<strong>{{ order.id }}</strong> был создан успешно.</p>
+<div class="container_4">
+    <button type="button" class="btn btn-light"><a href="{% url 'boardgames:boardgame_list' %}">Продолжить покупки</a></button>
+</div>
+
 {% endblock %}

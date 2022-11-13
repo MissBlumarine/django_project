@@ -17,7 +17,8 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Привет, {{ user.username }}!</h5>
-        <img src="/welcome.png" alt="Картинка">
+        {% load static %}
+        <img src="{% static 'myauth/welcome.png' %}" alt="Картинка">
         <p class="card-text">Мы снова рады видеть тебя на нашем сайте!</p>
         <a href="{% url 'boardgames:boardgame_list' %}" class="btn btn-primary">Начать покупки</a>
       </div>

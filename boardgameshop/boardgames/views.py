@@ -81,6 +81,51 @@ class BoardgameEconomyListView(ListView):
                 )
 
 
+class BoardgameChildListView(ListView):
+    context_object_name = "child"
+    queryset = (Boardgame
+                .objects
+                .filter(cathegory_id=5)
+                .order_by("pk")
+                )
+
+
+class BoardgameBrodilkiListView(ListView):
+    context_object_name = "brodilki"
+    queryset = (Boardgame
+                .objects
+                .filter(cathegory_id=6)
+                .order_by("pk")
+                )
+
+
+class BoardgameAdultListView(ListView):
+    context_object_name = "adult"
+    queryset = (Boardgame
+                .objects
+                .filter(cathegory_id=7)
+                .order_by("pk")
+                )
+
+
+class BoardgameFamilyListView(ListView):
+    context_object_name = "family"
+    queryset = (Boardgame
+                .objects
+                .filter(cathegory_id=8)
+                .order_by("pk")
+                )
+
+
+class BoardgameNewListView(ListView):
+    context_object_name = "new"
+    queryset = (Boardgame
+                .objects
+                .filter(issue_year=2022)
+                .order_by("pk")
+                )
+
+
 def product_detail(request, pk, slug):
     product = get_object_or_404(Boardgame,
                                 pk=pk,

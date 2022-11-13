@@ -1,0 +1,87 @@
+{% extends 'boardgames/base.html' %}
+
+{% block head %}
+
+   <style>
+      .sidebar_left {
+        background-color: #FFFFFF;
+        margin-top: 0px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        width: 220px;
+        padding: 0px 0px;
+        float:left
+      }
+      .cathegory{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding: 5px 10px;
+      }
+      .title-div{
+        margin-top: 20px;
+        margin-bottom: 10px;
+        padding: 7px 30px;
+        font-size: 1.1em;
+      }
+      .col{
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .container-games{
+        margin-left: 300px;
+        float: right;
+      }
+      .row_1{
+        margin-left: 300px;
+        margin-top: 50px;
+
+      }
+      .container-sidebar{
+        margin-top: 60px;
+      }
+      .boardgameImg{
+        margin-bottom: 10px;
+      }
+   </style>
+
+{% endblock %}
+
+
+{% block body %}
+{% load static %}
+    <div class = 'container-sidebar'>
+
+
+        {% for boardgame in object_list %}
+        <div class="row_1">
+            <div class="col-sm-6">
+                <div class="card">
+                    <form method="post" action="{% url 'cart:cart_add' boardgame.pk %}">
+                        <div class="card-body">
+                            <h4 class="card-title"><u>{{ boardgame.name }}</u></h4>
+                              <div class="boardgameImg">
+                                {% for boardimg in boardgame.boardimg.all %}
+                                 <img src="{{ boardimg.img.url }}" alt="Картинка" style="max-height:300px">
+                                {% endfor %}
+                                </div>
+<!--                            <img src="{% static 'boardgames/{{ boardgame.image_url}}.jpg' %}" alt="Картинка">-->
+                            <p class="card-text"><b>Описание: </b>{{ boardgame.description }}</p>
+                            <a href="{% url 'boardgames:details' boardgame.pk %}" class="btn btn-primary">Подробнее</a>
+                            <button class="btn btn-primary" type="submit">Добавить в корзину</button>
+                            <a href="#" class="btn btn-primary">{{ boardgame.price }} руб.</a>
+
+                            {% csrf_token %}
+                                            <label class="form-label" for="id_quantity">Количество:</label>
+                                            <input type="number" name="quantity" value="1" min="1"
+                                                   required id="id_quantity"/>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

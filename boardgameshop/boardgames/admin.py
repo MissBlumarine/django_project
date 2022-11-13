@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Boardgame, Cathegory
+from .models import Boardgame, Cathegory, BoardgameImage
 # from cart.models import Payment, OrderItem, Order
 
 
@@ -18,6 +18,8 @@ class CathegoryAdmin(admin.ModelAdmin):
     ordering = "pk",
 
 
-# admin.site.register(Payment)
-# admin.site.register(OrderItem)
-# admin.site.register(Order)
+@admin.register(BoardgameImage)
+class BoardgameImageAdmin(admin.ModelAdmin):
+    list_display = "pk", "boardgames", 'img'
+    list_display_links = "pk",
+    ordering = "pk",

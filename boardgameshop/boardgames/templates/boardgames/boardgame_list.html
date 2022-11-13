@@ -34,15 +34,21 @@
       .row_1{
         margin-left: 300px;
         margin-top: 50px;
+
       }
       .container-sidebar{
         margin-top: 60px;
+      }
+      .boardgameImg{
+        margin-bottom: 10px;
       }
    </style>
 
 {% endblock %}
 
+
 {% block body %}
+{% load static %}
     <div class = 'container-sidebar'>
 
 
@@ -53,8 +59,13 @@
                     <form method="post" action="{% url 'cart:cart_add' boardgame.pk %}">
                         <div class="card-body">
                             <h4 class="card-title"><u>{{ boardgame.name }}</u></h4>
-                            <img scr="{{ boardgame.image_url.url }}" alt="Картинка">
-                            <p class="card-text">{{ boardgame.description }}</p>
+                              <div class="boardgameImg">
+                                {% for boardimg in boardgame.boardimg.all %}
+                                 <img src="{{ boardimg.img.url }}" alt="Картинка" style="max-height:300px">
+                                {% endfor %}
+                                </div>
+<!--                            <img src="{% static 'boardgames/{{ boardgame.image_url}}.jpg' %}" alt="Картинка">-->
+                            <p class="card-text"><b>Описание: </b>{{ boardgame.description }}</p>
                             <a href="{% url 'boardgames:details' boardgame.pk %}" class="btn btn-primary">Подробнее</a>
                             <button class="btn btn-primary" type="submit">Добавить в корзину</button>
                             <a href="#" class="btn btn-primary">{{ boardgame.price }} руб.</a>

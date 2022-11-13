@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpRequest
 from django.views.generic import ListView, DetailView
-from .models import Boardgame, Cathegory
+from .models import Boardgame, Cathegory, BoardgameImage
 from cart.forms import CartAddProductForm
 
 
@@ -36,13 +36,21 @@ class BoardgameDetailView(DetailView):
     model = Boardgame
 
 
-class CathegorylistView(ListView):
+class CathegoryListView(ListView):
     context_object_name = "cathegorys"
     queryset = (Cathegory
                 .objects
                 .order_by("pk")
                 .all()
                 )
+
+
+# class BoardgameImageListView(ListView):
+#     context_object_name = "boardgame_img"
+#     queryset = (BoardgameImage
+#                 .objects
+#                 .all()
+#                 )
 
 
 def product_detail(request, pk, slug):
@@ -52,4 +60,4 @@ def product_detail(request, pk, slug):
                                 available=True)
     cart_product_form = CartAddProductForm()
     return render(request, 'boardgames/boardgame_detail.html', {'product': product,
-                                                      'cart_product_form': cart_product_form})
+                                                                'cart_product_form': cart_product_form})

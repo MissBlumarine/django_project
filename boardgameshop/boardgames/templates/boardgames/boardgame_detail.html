@@ -11,6 +11,12 @@
        .container_25{
         padding: 20px 20px;
       }
+      .container_26{
+        margin-left: 270px;
+      }
+       .card-body{
+        margin-left: 255px;
+      }
    </style>
 
 {% endblock %}
@@ -21,7 +27,11 @@
 
       <div class="container_25">
           <h3><strong>{{boardgame.name}}</strong></h3>
-          <img scr="{{ boardgame.image_url.url }}" alt="Картинка">
+          <div class="boardgameImg">
+                                {% for boardimg in boardgame.boardimg.all %}
+                                 <img src="{{ boardimg.img.url }}" alt="Картинка" style="max-height:300px">
+                                {% endfor %}
+                                </div>
         <p>Производитель: {{boardgame.producer}}</p>
         <p>Год выпуска игры: {{boardgame.issue_year}}</p>
         <p>Возраст: {{boardgame.min_age_of_player}} +</p>
@@ -53,7 +63,7 @@
                         </div>
                     </form>
 
-<div class="container_4">
+<div class="container_26">
     <button type="button" class="btn btn-light"><a href="{% url 'boardgames:boardgame_list' %}">
         Продолжить покупки</a></button>
 </div>

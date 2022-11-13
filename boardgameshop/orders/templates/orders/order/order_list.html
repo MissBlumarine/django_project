@@ -1,0 +1,65 @@
+{% extends "boardgames/base.html" %}
+
+{% block head %}
+ <style>
+      .cart {
+        background-color: #FFFFFF;
+        margin-left: 250px;
+        padding: 0px, 20px;
+        margin-top: 0px;
+      }
+      .text_1 {
+        margin-left: 260px;
+        margin-top: 15px;
+      }
+      .col1{
+        width: 150px;
+        height: 50px;
+      }
+      .col2{
+        width: 300px;
+      }
+      .num{
+        width: 150px;
+      }
+      .container_4{
+        margin-top: 15px;
+      }
+ </style>
+{% endblock %}
+
+{% block body_1 %}
+
+    <table class="cart">
+        <h4 class="text_1">Ваши заказы</h4>
+    <thead class="row1">
+        <tr align="center">
+            <th>Номер заказа</th>
+            <th>Дата создания заказа</th>
+            <th>Итого (руб.)</th>
+            <th> </th>
+        </tr>
+    </thead>
+        <tbody>
+        {% for orders in object_list %}
+                <tr align="center">
+                    <td class="col1">{{ orders.pk }}</td>
+                    <td class="col2">{{ orders.created }}</td>
+                    <td class="num">{{ orders.get_total_cost }} руб</td>
+                </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+</div>
+
+<div class="container_4">
+    <button type="button" class="btn btn-light"><a href="{% url 'boardgames:boardgame_list' %}">Продолжить покупки</a></button>
+</div>
+
+{% endblock %}

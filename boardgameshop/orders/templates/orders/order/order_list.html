@@ -41,13 +41,17 @@
         </tr>
     </thead>
         <tbody>
-        {% for orders in object_list %}
+        {% if user.is_authenticated %}
+        {% for order in orders %}
                 <tr align="center">
-                    <td class="col1">{{ orders.pk }}</td>
-                    <td class="col2">{{ orders.created }}</td>
-                    <td class="num">{{ orders.get_total_cost }} руб</td>
+                    <td class="col1">{{ order.pk }}</td>
+                    <td class="col2">{{ order.created }}</td>
+                    <td class="num">{{ order.get_total_cost }} руб</td>
                 </tr>
-        {% endfor %}
+       {% endfor %}
+        {% else %}
+        <h4> Для просмотра Ваших заказов необходимо авторизоваться.</h4>
+        {% endif %}
         </tbody>
     </table>
 
@@ -63,3 +67,6 @@
 </div>
 
 {% endblock %}
+
+
+

@@ -1,8 +1,12 @@
+from django.contrib.auth.models import User
 from django.db import models
 from boardgames.models import Boardgame
 
+from myauth.models import UserProfile
+
 
 class Order(models.Model):
+    user = models.ForeignKey(User, related_name='user_orders', null=True, on_delete=models.PROTECT)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()

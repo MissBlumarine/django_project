@@ -11,6 +11,7 @@ def order_create(request):
         form = OrderCreateForm(request.POST)
         if form.is_valid():
             order = form.save()
+            order.userprofile = request.user
             for item in cart:
                 OrderItem.objects.create(order=order,
                                          product=item['product'],
@@ -35,3 +36,13 @@ class OrderListView(ListView):
                 .all()
                 )
     template_name = 'orders/order/order_list.html'
+
+
+def my_orders(request):
+    orders = Order.objects.filter(user=request.user)
+    return render(request, 'orders/order/order_list.html',
+                  {'orders': orders, })
+
+
+def no_orders(request):
+    return render(request, 'orders/order/no_list.html')

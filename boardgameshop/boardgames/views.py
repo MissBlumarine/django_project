@@ -45,12 +45,40 @@ class CathegoryListView(ListView):
                 )
 
 
-# class BoardgameImageListView(ListView):
-#     context_object_name = "boardgame_img"
-#     queryset = (BoardgameImage
-#                 .objects
-#                 .all()
-#                 )
+class BoardgameAdventuresListView(ListView):
+    context_object_name = "adventures"
+    queryset = (Boardgame
+                .objects
+                .filter(cathegory_id=1)
+                .order_by("pk")
+                )
+
+
+class BoardgameCompanyListView(ListView):
+    context_object_name = "company"
+    queryset = (Boardgame
+                .objects
+                .filter(cathegory_id=2)
+                .order_by("pk")
+                )
+
+
+class BoardgameHardcoreListView(ListView):
+    context_object_name = "hardcore"
+    queryset = (Boardgame
+                .objects
+                .filter(cathegory_id=3)
+                .order_by("pk")
+                )
+
+
+class BoardgameEconomyListView(ListView):
+    context_object_name = "economy"
+    queryset = (Boardgame
+                .objects
+                .filter(cathegory_id=4)
+                .order_by("pk")
+                )
 
 
 def product_detail(request, pk, slug):

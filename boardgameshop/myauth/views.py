@@ -17,10 +17,14 @@ class MeView(TemplateView):
     template_name = "myauth/me.html"
 
 
+class AfterRegistration(TemplateView):
+    template_name = "myauth/after_registration.html"
+
+
 class UserCreationView(CreateView):
     model = UserModel
     form_class = UserCreationForm
-    success_url = reverse_lazy("myauth:me")
+    success_url = reverse_lazy("myauth:after_reg")
     template_name = "registration/register.html"
 
     def form_valid(self, form):
@@ -35,7 +39,7 @@ class UserCreationView(CreateView):
 class UserCreationView(CreateView):
     model = UserModel
     form_class = UserCreationForm
-    success_url = reverse_lazy("myauth:me")
+    success_url = reverse_lazy("myauth:after_reg")
     template_name = "registration/register.html"
 
 

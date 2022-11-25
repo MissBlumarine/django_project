@@ -11,7 +11,9 @@ def order_create(request):
         form = OrderCreateForm(request.POST)
         if form.is_valid():
             order = form.save()
-            order.userprofile = request.user
+            order.user = request.user
+            order.save()
+            # order.userprofile = request.user
             for item in cart:
                 OrderItem.objects.create(order=order,
                                          product=item['product'],

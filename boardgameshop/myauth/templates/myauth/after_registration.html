@@ -1,0 +1,31 @@
+{% extends 'boardgames/base.html' %}
+
+{% block head %}
+ <style>
+ .row_23{
+    margin-left: 300px;
+    margin-top: 50px;
+ }
+ </style>
+{% endblock %}
+
+
+{% block body_1 %}
+
+<div class="row_23">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Вы успешно зарегистрировались!
+                               Пожалуйста, авторизуйтесь.</h5>
+        {% load static %}
+        <img src="{% static 'myauth/welcome.png' %}" alt="Картинка">
+        <p class="card-text">Добро пожаловать в магазин настольных игр!</p>
+        <a href="{% url 'boardgames:boardgame_list' %}" class="btn btn-primary">Начать покупки</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
